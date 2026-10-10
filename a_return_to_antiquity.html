@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Return to Antiquity</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        storm: '#16202b',
+                        abyss: '#0d1319',
+                        forest: '#14241d',
+                        gold: '#d4af37',
+                        'gold-dim': '#a3842c',
+                        marble: '#f2f0e6',
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'surreal-gradient': 'linear-gradient(to bottom, #16202b 0%, #14241d 50%, #0d1319 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles and smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: theme('colors.storm');
+            color: theme('colors.marble');
+            overflow-x: hidden;
+        }
+
+        /* Vintage Noise/Grain Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating elements for surreal collage vibe */
+        .float-slow {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .float-medium {
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Staggered animation delays for the timeline */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-700 { animation-delay: 700ms; }
+        .delay-900 { animation-delay: 900ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.abyss'); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.forest'); 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.gold-dim'); 
+        }
+        
+        /* Text selection highlight */
+        ::selection {
+            background-color: theme('colors.gold');
+            color: theme('colors.abyss');
+        }
+    </style>
+</head>
+<body class="font-playfair antialiased min-h-screen bg-surreal-gradient relative">
+
+    <!-- Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Surreal Abstract Collage Elements in Background -->
+    <div class="fixed top-[10%] left-[-5%] text-[15rem] opacity-5 float-slow text-gold pointer-events-none select-none filter blur-sm">
+        🏛️
+    </div>
+    <div class="fixed top-[40%] right-[-10%] w-64 h-64 rounded-full bg-gold/10 mix-blend-overlay blur-3xl float-medium pointer-events-none"></div>
+    <div class="fixed bottom-[20%] right-[5%] text-[10rem] opacity-10 float-medium text-marble pointer-events-none select-none" style="writing-mode: vertical-rl;">
+        MCMXCVIII
+    </div>
+    <!-- Floating Gold Coin/Halo simulation -->
+    <div class="fixed top-[20%] right-[15%] w-32 h-32 rounded-full border border-gold/30 float-slow pointer-events-none shadow-[0_0_40px_rgba(212,175,55,0.15)] flex items-center justify-center">
+        <div class="w-24 h-24 rounded-full border border-gold/10"></div>
+    </div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Header -->
+        <header class="text-center mb-20 fade-in-up">
+            <div class="inline-block mb-4">
+                <span class="block text-gold/50 text-sm tracking-[0.3em] uppercase mb-2">Bucharest, October 2026</span>
+                <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+            </div>
+            <h1 class="font-cinzel text-5xl md:text-6xl text-marble drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] mb-6 leading-tight">
+                A Return to <br> <span class="text-gold italic font-playfair pr-4">Antiquity</span>
+            </h1>
+            <p class="text-lg md:text-xl text-marble/70 italic px-4 font-light leading-relaxed">
+                "Where the modern sky fractures, and the ancient world bleeds through."
+            </p>
+        </header>
+
+        <!-- Itinerary Timeline -->
+        <main class="relative">
+            <!-- The Golden Thread (Timeline line) -->
+            <div class="absolute left-4 md:left-8 top-2 bottom-0 w-[1px] bg-gradient-to-b from-gold/80 via-gold/30 to-transparent"></div>
+
+            <!-- Chapter I -->
+            <article class="relative pl-12 md:pl-20 mb-16 fade-in-up delay-100">
+                <!-- Node -->
+                <div class="absolute left-[12px] md:left-[28px] top-1.5 w-2 h-2 rounded-full bg-gold shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                <div class="absolute left-[8px] md:left-[24px] top-[2px] w-4 h-4 rounded-full border border-gold/50"></div>
+                
+                <header class="mb-3">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="font-cinzel text-gold tracking-widest text-lg md:text-xl">15:15</span>
+                        <div class="h-[1px] w-8 bg-gold/30"></div>
+                    </div>
+                    <h2 class="font-cinzel text-2xl md:text-3xl text-marble mb-1">Chapter I: The Departure</h2>
+                    <h3 class="font-playfair italic text-marble/50 text-sm tracking-wide">Leaving Strada Cașin</h3>
+                </header>
+                <p class="text-marble/80 leading-relaxed font-light">
+                    We step out of the familiar, leaving the mundane behind. The sky above is vast, and the afternoon light begins to pull us toward an older, heavier time. The journey begins.
+                </p>
+            </article>
+
+            <!-- Chapter II -->
+            <article class="relative pl-12 md:pl-20 mb-16 fade-in-up delay-300">
+                <div class="absolute left-[12px] md:left-[28px] top-1.5 w-2 h-2 rounded-full bg-storm border border-gold"></div>
+                
+                <header class="mb-3">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="font-cinzel text-gold tracking-widest text-lg md:text-xl">15:35</span>
+                        <div class="h-[1px] w-8 bg-gold/30"></div>
+                    </div>
+                    <h2 class="font-cinzel text-2xl md:text-3xl text-marble mb-1">Chapter II: Ambrosia</h2>
+                    <h3 class="font-playfair italic text-marble/50 text-sm tracking-wide">Piața Victoriei</h3>
+                </header>
+                <p class="text-marble/80 leading-relaxed font-light">
+                    A brief anchor to the present. We share boba tea—a modern nectar—before crossing the threshold into the stone and shadows of the city's royal past.
+                </p>
+            </article>
+
+            <!-- Chapter III -->
+            <article class="relative pl-12 md:pl-20 mb-16 fade-in-up delay-500">
+                <div class="absolute left-[12px] md:left-[28px] top-1.5 w-2 h-2 rounded-full bg-gold shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                <div class="absolute left-[8px] md:left-[24px] top-[2px] w-4 h-4 rounded-full border border-gold/50"></div>
+                
+                <header class="mb-3">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="font-cinzel text-gold tracking-widest text-lg md:text-xl">16:15</span>
+                        <div class="h-[1px] w-8 bg-gold/30"></div>
+                    </div>
+                    <h2 class="font-cinzel text-2xl md:text-3xl text-marble mb-1">Chapter III: The Royal Artery</h2>
+                    <h3 class="font-playfair italic text-marble/50 text-sm tracking-wide">Calea Victoriei</h3>
+                </header>
+                <div class="relative bg-white/5 border border-white/10 p-4 rounded-sm backdrop-blur-sm shadow-xl">
+                    <p class="text-marble/80 leading-relaxed font-light">
+                        The architecture shifts. Glass and steel yield to wrought iron, caryatids, and heavy stone. We walk slowly, letting the neoclassical facades frame us like figures in an old, forgotten painting.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Chapter IV -->
+            <article class="relative pl-12 md:pl-20 mb-16 fade-in-up delay-700">
+                <div class="absolute left-[12px] md:left-[28px] top-1.5 w-2 h-2 rounded-full bg-storm border border-gold"></div>
+                
+                <header class="mb-3">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="font-cinzel text-gold tracking-widest text-lg md:text-xl">16:45</span>
+                        <div class="h-[1px] w-8 bg-gold/30"></div>
+                    </div>
+                    <h2 class="font-cinzel text-2xl md:text-3xl text-marble mb-1">Chapter IV: Imperial Echoes</h2>
+                    <h3 class="font-playfair italic text-marble/50 text-sm tracking-wide">MNIR & Palace of Justice</h3>
+                </header>
+                <p class="text-marble/80 leading-relaxed font-light">
+                    We arrive at the steps where the bronze Emperor watches over the river. Across the water, the colossal Virtues gaze down from their palatial heights. Here, the scale of Rome feels tangible, heavy, and immortal.
+                </p>
+            </article>
+
+            <!-- Chapter V -->
+            <article class="relative pl-12 md:pl-20 pb-16 fade-in-up delay-900">
+                <div class="absolute left-[12px] md:left-[28px] top-1.5 w-2 h-2 rounded-full bg-gold shadow-[0_0_15px_rgba(212,175,55,1)]"></div>
+                <div class="absolute left-[6px] md:left-[22px] top-[0px] w-5 h-5 rounded-full border border-gold float-slow"></div>
+                
+                <header class="mb-3">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="font-cinzel text-gold tracking-widest text-lg md:text-xl">17:45</span>
+                        <div class="h-[1px] w-8 bg-gold/30"></div>
+                    </div>
+                    <h2 class="font-cinzel text-2xl md:text-3xl text-marble mb-1">Chapter V: The Titans</h2>
+                    <h3 class="font-playfair italic text-marble/50 text-sm tracking-wide">Giganții, Carol Park at dusk</h3>
+                </header>
+                <div class="relative overflow-hidden border border-forest bg-forest/20 p-5 rounded-sm backdrop-blur-md">
+                    <!-- Decorative surreal touch inside the card -->
+                    <div class="absolute -right-10 -bottom-10 text-6xl opacity-10 float-medium">🦅</div>
+                    <p class="text-marble/80 leading-relaxed font-light relative z-10">
+                        As dusk bleeds into the sky, we stand before the Giants. Massive, tormented, and mythic. The fading light catches the stone muscles and twisted forms, completing our plunge into the sublime beauty of a lost era.
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer / Closing -->
+        <footer class="mt-8 text-center px-4 pb-12 fade-in-up delay-900">
+            <div class="w-16 h-[1px] bg-gold/40 mx-auto mb-8"></div>
+            <p class="font-cinzel text-gold text-xl mb-4 italic">"Omnia mutantur, nihil interit."</p>
+            <p class="font-playfair text-marble/60 text-sm tracking-wider">
+                Everything changes, nothing perishes.<br>
+                For as long as we walk among them, time is ours.
+            </p>
+        </footer>
+
+    </div>
+</body>
+</html>
